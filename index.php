@@ -19,11 +19,11 @@
     </form>
     <br>
     <ul>
-        <li><a href = "post.php?id=1">กระทู้ 1</a></li>
-        <li><a href = "post.php?id=2">กระทู้ 2</a></li>
-        <li><a href = "post.php?id=3">กระทู้ 3</a></li>
-        <li><a href = "post.php?id=4">กระทู้ 4</a></li>
-        <li><a href = "post.php?id=5">กระทู้ 5</a></li>
+        <?php
+            for($i = 1 ; $i <= 10 ; $i++){
+                echo "<li><a href = post.php?id=$i>กระทู้ $i</a></li>" ;
+            }
+        ?>
     </ul>
 </body>
 </html>
