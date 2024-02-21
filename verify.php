@@ -13,12 +13,8 @@
     <title>Verify</title>
 </head>
 <body>
-    <h1 style = "text-align: center;">Webboard KakKak</h1>
-    <hr>
-    <div style="text-align: center;">
-    </div>
-    <br>
-    <div style="text-align: center;">
+
+
     <?php
     $login = $_POST['login'];
     $pass = $_POST['password'];
@@ -26,19 +22,24 @@
             $_SESSION["username"] = "admin";
             $_SESSION["role"] = "a";
             $_SESSION["id"] = session_id();
-            echo "ยินดีต้อนรับคุณ $login <br>";
+            header("location:index.php");
+            die();
+            //echo "ยินดีต้อนรับคุณ $login <br>";
         }
         else if($login == 'member' && $pass == 'mem1234'){
             $_SESSION["username"] = "member";
             $_SESSION["role"] = "m";
             $_SESSION["id"] = session_id();
-            echo "ยินดีต้อนรับคุณ $login <br>";
+            header("location:index.php");
+            die();
+            //echo "ยินดีต้อนรับคุณ $login <br>";
         }
         else{
-            echo "ชื่อบัญชีหรือรหัสผ่านไม่ถูกต้อง";
+            $_SESSION['error'] = 'error';
+            header("location:login.php");
+            die();
+            //echo "ชื่อบัญชีหรือรหัสผ่านไม่ถูกต้อง";
         }
     ?>
-    <p style = "text-align: center;"><a href = "index.php" >กลับไปหน้าหลัก</a></p>
-    </div>
 </body>
 </html>
