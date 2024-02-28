@@ -23,10 +23,16 @@ session_start();
         <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         --ทั้งหมด--
         </button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">ทั้งหมด</a></li>
-            <li><a class="dropdown-item" href="#">เรื่องเรียน</a></li>
-            <li><a class="dropdown-item" href="#">เรื่องทั่วไป</a></li>
+        <ul class = "dropdown-menu" aria-labelledby="Button2">
+            <li><a href = "#" class = "dropdown-item">ทั้งหมด</a></li>
+            <?php
+                $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8" , "root" , "");
+                $sql = "SELECT * FROM category";
+                foreach($conn -> query($sql) as $row){
+                    echo "<li><a class = dropdown-item href = #>$row[name]</a></li>";
+                }
+                $conn = null;
+            ?>
         </ul>
         </span>
     </div>
@@ -37,21 +43,20 @@ session_start();
     </div>
     <?php  } ?>
 </div>
-
     <table class = "table table-striped mt-4">
     <?php
-        for($i=1;$i<=10;$i++){
-            echo"<tr><td class = 'd-flex justify-content-between'><a href=post.php?id=$i style = text-decoration:none>กระทู้ที่ $i</a>";
-            if(isset($_SESSION['id']) && $_SESSION['role']=='a'){
-                echo "&nbsp;&nbsp;<a href=delete.php?id=$i class = 'btn btn-danger btn-sm'><i class='bi bi-trash'></i></a>";
-            }
-            echo "</td></tr>";
+        $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8" , "root" , "");
+        $sql = "SELECT category.name , post.title , post.id , user.login , post.post_date FROM post
+        INNER JOIN user ON(post.user_id = user.id) 
+        INNER JOIN category ON (post.cat_id = category.id) ORDER BY post.post_date DESC";
+        $result = $conn -> query($sql);
+        while($row = $result -> fetch()){
+            echo "<tr><td>[ $row[0] ] <a href=post.php?id=$row[2]
+            style = text-decoration:none>$row[1]</a><br>$row[3] - $row[4]</td></tr>";
         }
-        ?>
+        $conn = null;
+    ?>
     </table>
-    <ul>
-    
-    </ul>
     </div>
 </body>
 </html>
