@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2024 at 10:54 AM
+-- Generation Time: Mar 06, 2024 at 11:03 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -55,6 +55,17 @@ CREATE TABLE `comment` (
   `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`id`, `content`, `post_date`, `user_id`, `post_id`) VALUES
+(1, 'F แน่นอนครับ', '2024-03-06 15:25:40', 16, 5),
+(2, 'A แน่นอนครับ', '2024-03-06 16:40:51', 17, 5),
+(3, 'A ทุกวิชา', '2024-03-06 16:41:10', 17, 5),
+(4, 'ลาออกเลยครับ', '2024-03-06 16:49:15', 17, 8),
+(5, 'test', '2024-03-06 16:49:48', 17, 8);
+
 -- --------------------------------------------------------
 
 --
@@ -77,7 +88,8 @@ CREATE TABLE `post` (
 INSERT INTO `post` (`id`, `title`, `content`, `post_date`, `cat_id`, `user_id`) VALUES
 (5, 'F แน่นอน', 'FFFFF', '2024-02-28 16:41:51', 1, 19),
 (6, 'หมูหยองหมาแก่', 'หมูหยองโง่', '2024-02-28 16:42:35', 1, 19),
-(7, 'กฟหกฟ', 'ฟหกหฟกหฟ', '2024-02-28 16:46:29', 3, 17);
+(7, 'กฟหกฟ', 'ฟหกหฟกหฟ', '2024-02-28 16:46:29', 3, 17),
+(8, 'อยากลาออก', 'เครียดกับ DCK มากเลยครับ ทำยังไงดี', '2024-03-06 16:21:03', 2, 17);
 
 -- --------------------------------------------------------
 
@@ -147,13 +159,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
