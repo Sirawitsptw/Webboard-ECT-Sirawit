@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2024 at 11:03 AM
+-- Generation Time: Mar 13, 2024 at 10:40 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -55,17 +55,6 @@ CREATE TABLE `comment` (
   `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `comment`
---
-
-INSERT INTO `comment` (`id`, `content`, `post_date`, `user_id`, `post_id`) VALUES
-(1, 'F แน่นอนครับ', '2024-03-06 15:25:40', 16, 5),
-(2, 'A แน่นอนครับ', '2024-03-06 16:40:51', 17, 5),
-(3, 'A ทุกวิชา', '2024-03-06 16:41:10', 17, 5),
-(4, 'ลาออกเลยครับ', '2024-03-06 16:49:15', 17, 8),
-(5, 'test', '2024-03-06 16:49:48', 17, 8);
-
 -- --------------------------------------------------------
 
 --
@@ -86,10 +75,8 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `title`, `content`, `post_date`, `cat_id`, `user_id`) VALUES
-(5, 'F แน่นอน', 'FFFFF', '2024-02-28 16:41:51', 1, 19),
 (6, 'หมูหยองหมาแก่', 'หมูหยองโง่', '2024-02-28 16:42:35', 1, 19),
-(7, 'กฟหกฟ', 'ฟหกหฟกหฟ', '2024-02-28 16:46:29', 3, 17),
-(8, 'อยากลาออก', 'เครียดกับ DCK มากเลยครับ ทำยังไงดี', '2024-03-06 16:21:03', 2, 17);
+(9, 'skasdksad', 'sadsadsadsadsadsad', '2024-03-13 15:48:07', 2, 20);
 
 -- --------------------------------------------------------
 
@@ -113,9 +100,11 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `login`, `password`, `name`, `gender`, `email`, `role`) VALUES
 (16, 'Sirawit', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Sirawit srw', 'm', 'sirawit@gmail.com', 'm'),
-(17, 'srw', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'srw', 'm', 'srw@gmail.com', 'm'),
+(17, 'srw', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'srw', 'm', 'srw@gmail.com', 'a'),
 (18, 'srwp', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Srwp pp', 'm', 'srwppp@gmail.com', 'm'),
-(19, 'srwppalm', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'srwppalm', 'm', 'srwppalm@gmail.com', 'm');
+(19, 'srwppalm', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'srwppalm', 'm', 'srwppalm@gmail.com', 'm'),
+(20, 'admin', '8dc9fa69ec51046b4472bb512e292d959edd2aef', 'admin', 'm', 'admin@gmail.com', 'a'),
+(21, 'sad', '011c945f30ce2cbafc452f39840f025693339c42', 'sadsad', 'f', 'sadad@gmail.com', 'm');
 
 --
 -- Indexes for dumped tables
@@ -165,13 +154,13 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
