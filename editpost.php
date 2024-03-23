@@ -25,11 +25,19 @@
                             }
                         }
                         unset($_SESSION['add_edit']);
+                        $sql= "SELECT user_id FROM post WHERE post.id=$_GET[id]";
+                        $conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
+                        foreach($conn->query($sql) as $row){
+                            if(!isset($_SESSION['id']) || $_SESSION['user_id']!=$row['user_id'] ){
+                                header("location:index.php");
+                                die();
+                            }
+                        }
                     ?>
                 <div class="card border-warning">
                     <div class="card-header bg-warning text-white">แก้ไขกระทู้</div>
                     <div class="card-body">
-                        <form action="editpost_save.php" method = "get">
+                        <form action="editpost_save.php" method = "post">
                         <div class="row">
                             <label class="col-lg-3 col-form-label">หมวดหมู่ :</label>
                             <div class="col-lg-9">
@@ -67,10 +75,13 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col-lg-12 d-flex justify-content-center">
-                                <button type = "submit" class = "btn btn-warning btn-sm text-white me-2">
-                                <i class = "bi bi-caret-right-square"></i> บันทึกข้อความ</button>
+                                <button type = 'submit' class = 'btn btn-warning btn-sm text-white me-2'>
+                                <i class = 'bi bi-caret-right-square'></i> บันทึกข้อความ</button>
                             </div>
                         </div>
+                        <?php
+                            echo "<input type='text' name='id' style='display:none' value=$_GET[id]>";
+                        ?>
                         </form>
                     </div>
                 </div>
